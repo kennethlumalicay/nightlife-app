@@ -1,10 +1,10 @@
 {
   "name": "nightlife-app-klm",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "dev.js",
   "scripts": {
     "dev": "webpack",
-    "start": "node dev/server.js",
+    "start": "node bin/dev.js",
     "clean": "rm -rf dist",
     "build": "npm run dev && node bin/dev"
   },
