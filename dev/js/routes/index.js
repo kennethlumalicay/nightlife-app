@@ -19,7 +19,7 @@ module.exports = function (app, passport) {
 
 	app.route('/login')
 		.get(function (req, res) {
-			res.redirect('/auth/twitter/callback');
+			res.redirect('/auth/twitter');
 		});
 
 	app.route('/signout')
@@ -32,10 +32,9 @@ module.exports = function (app, passport) {
 		.get(passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(passport.authenticate('twitter', {
-			successRedirect: '/',
-			failureRedirect: '/'
-		}));
+		.get(function(req, res) {
+			res.redirect('/');
+		});
 
 	app.route('/api/yelp')
 		.get(function (req, res) {
