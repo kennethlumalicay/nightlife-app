@@ -31,13 +31,13 @@ module.exports = function (app, passport) {
 	app.route('/auth/twitter')
 		.get(passport.authenticate('twitter'));
 
+/*
 	app.route('/auth/twitter/callback')
 		.get(passport.authenticate('twitter', {
+			successRedirect: '/',
 			failureRedirect: '/'
-		}), function (req, res) {
-			console.log("what the fukk", req);
-			res.redirect('/');
-		});
+		}));
+		*/
 
 	app.route('/api/yelp')
 		.get(function (req, res) {
