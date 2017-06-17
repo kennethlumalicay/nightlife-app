@@ -38,7 +38,8 @@ app.use('/src', express.static('src'));
 app.use(session({
 	secret: 'secretKLM',
 	resave: false,
-	saveUninitialized: true
+	saveUninitialized: true,
+  store: require('mongoose-session')(mongoose)
 }));
 // Passport
 app.use(passport.initialize());
