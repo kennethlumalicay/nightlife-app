@@ -16,7 +16,7 @@ var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var routes = require('./js/routes/index.js');
-//var mongoStore = require('connect-mongo')(session);
+var mongoStore = require('connect-mongo')(session);
 // Express app
 var app = express();
 // .env
@@ -40,7 +40,7 @@ app.use(session({
 	secret: 'secretKLM',
 	resave: false,
 	saveUninitialized: true
-//  store: new mongoStore({ mongooseConnection: mongoose.connection })
+  store: new mongoStore({ mongooseConnection: mongoose.connection })
 }));
 // Passport
 app.use(passport.initialize());
