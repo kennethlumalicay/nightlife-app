@@ -29,10 +29,10 @@ module.exports = function (app, passport) {
 		});
 
 	app.route('/auth/twitter')
-		.post(passport.authenticate('twitter'));
+		.get(passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(passport.authenticate('twitter', {
+		.post(passport.authenticate('twitter', {
 			successRedirect: '/',
 			failureRedirect: '/'
 		}));
