@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as actionCreators from './../actions/index.js'
 
 @connect(
-	state => state.user
+	state => ({user: state.user})
 )
 
 class Header extends Component {
