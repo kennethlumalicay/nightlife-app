@@ -32,7 +32,10 @@ module.exports = function (app, passport) {
 		.get(passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.get(function(req, res) {
+		.get(passport.authenticate('twitter', {
+			failureRedirect: '/'
+		})function (req, res) {
+			console.log("what the fukk", req);
 			res.redirect('/');
 		});
 
