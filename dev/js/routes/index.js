@@ -19,7 +19,7 @@ module.exports = function (app, passport) {
 
 	app.route('/login')
 		.get(function (req, res) {
-			res.redirect('/auth/twitter');
+			res.redirect('/auth/twitter/callback');
 		});
 
 	app.route('/signout')
