@@ -40,7 +40,7 @@ app.use(session({
 	secret: 'secretKLM',
 	resave: false,
 	saveUninitialized: true,
-  store: new mongoStore({ mongooseConnection: mongoose.connection })
+  store: new mongoStore({ dbPromise: mongoose.Promise })
 }));
 // Passport
 app.use(passport.initialize());
