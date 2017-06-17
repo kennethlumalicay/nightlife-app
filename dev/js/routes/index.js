@@ -34,8 +34,7 @@ module.exports = function (app, passport) {
 	app.route('/auth/twitter/callback')
 		.get(passport.authenticate('twitter', {
 			successRedirect: '/',
-			failureRedirect: '/',
-			failureFlash: true
+			failureRedirect: '/'
 		}));
 
 	app.route('/api/yelp')
