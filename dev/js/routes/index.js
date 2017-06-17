@@ -32,9 +32,10 @@ module.exports = function (app, passport) {
 		.get(passport.authenticate('twitter'));
 
 	app.route('/auth/twitter/callback')
-		.post(passport.authenticate('twitter', {
+		.get(passport.authenticate('twitter', {
 			successRedirect: '/',
-			failureRedirect: '/'
+			failureRedirect: '/',
+			failureFlash: true
 		}));
 
 	app.route('/api/yelp')
