@@ -19,9 +19,10 @@ body {
 #header > input {
 	font-size: 1em;
 	border: 1px solid rgba(0,0,0,0.7);
-	border-radius: 2px;
-	padding: 2px;
+	border-radius: 10px;
+	padding: 3px;
 	margin-right: 10px;
+	outline: none;
 }
 #header > a {
 	font-family: 'Megrim', cursive;
@@ -49,7 +50,6 @@ body {
 	flex-direction: column;
 	flex-wrap: wrap;
 	max-width: 346px;
-	padding: 5px;
 	margin: 10px;
 	box-shadow: -5px 5px 15px 0px rgba(0, 0, 0, 1);
 	border-radius: 2px;
@@ -60,10 +60,10 @@ body {
 	max-width: 300px;
 }
 .bars-div > div{
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0,0,0,0.5);
 	color: rgba(222,222,222,1);
 	border-radius: 2px;
-	padding: 5px;
+	padding: 10px;
 }
 .bars-div > div > p {
 	margin: 2px auto;
@@ -73,8 +73,6 @@ body {
 	border: none;
 	color: rgba(222,222,222,0.9);
 	background-color: rgba(0,0,0,0.9);
-	border-radius: 2px;
-	margin: 5px 0px;
 	padding: 5px;
 	transition: all 0.5s ease-in-out;
 }
@@ -85,5 +83,5 @@ body {
 .bar-filler {
 	font-family: 'Megrim', cursive;
 	font-size: 7em;
-	color: rgba(55,55,55,1);
+	color: rgba(125,125,125,1);
 }

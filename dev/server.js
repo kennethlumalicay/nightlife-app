@@ -60,7 +60,13 @@ var yelp = require('./js/api/yelpApi.js');
 // https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
 app.use(handleRender);
 function handleRender(req, res) {
-  let initialState = { user: req.user ? req.user.twitter : null };
+  let initialState = {
+    user: req.user ? req.user.twitter : null,
+    bars: {
+      isFetching: false,
+      isFetchFail: false
+    }
+  };
 	const store = createStore(
     allReducers,
     initialState,

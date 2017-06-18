@@ -28,7 +28,7 @@ class Header extends Component {
 			<a href='/login'>Login</a>;
 		return (
 	    <section id="header">
-	    	<input type="text" placeholder="Search here" onChange={this.searchHandler}/>
+	    	<input type="text" placeholder="Search some place." onChange={this.searchHandler}/>
 	    	{Button}
 	    </section>
     )
