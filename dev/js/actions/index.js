@@ -8,6 +8,6 @@ export function searchBar(search, dispatch, lat=null, lon=null) {
 		dispatch({ type:'BAR_SEARCH', payload:bList});
 	})
 	.catch(err => {
-		console.log('Failed to fetch data from yelp api.');
+		console.log('Failed to fetch data from yelp api.', err);
   	});
 };

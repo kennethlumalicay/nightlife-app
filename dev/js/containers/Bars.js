@@ -13,15 +13,39 @@ import {searchBar} from './../actions/index'
 class Bars extends Component {
 	render() {
 		if(this.props.bars) {
-			var bars = this.props.bars.businesses;
+			var oldBars = this.props.bars.businesses;
+			console.log(oldBars);
+			var bars = oldBars.map(bar => {
+				bar.rating = new Array(Math.round(bar.rating)).fill()
+					.map((e,i) => <i key={i} className="fa fa-star" aria-hidden="true"></i>);
+				return bar;
+			});
 			return (
 		    <section id="bars">
-		    	{bars.map((e,i)=>
-		    		<div key={i}>{e.name}</div>)}
+		    	{bars.map((bar,i)=> 
+		    		<div className='bars-div' key={i} style={{
+		    			backgroundImage: 'url(' + bar.image_url + ')',
+		    			backgroundSize: 'cover'
+		    		}}>
+					    <div>
+					    	<h2>{bar.name}</h2>
+					      <p>{bar.location.address1}, {bar.location.city}</p>
+					     	<p>{bar.phone}</p>
+					     	<p>{bar.price}</p>
+					     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
+					      <p>Rating: {bar.rating}</p>
+					    </div>
+					    <button className="reservation-btn">
+					    <i className="fa fa-hand-o-right" aria-hidden="true"></i> 
+					    Not going
+					     <i className="fa fa-hand-o-left" aria-hidden="true"></i>
+					    </button>
+		    		</div>
+		    	)}
 		    </section>
 	    )
 		} else {
-			return null;
+			return <h1 className='bar-filler'>Where we goin?</h1>;
 		}
   }
 };

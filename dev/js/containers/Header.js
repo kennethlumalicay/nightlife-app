@@ -18,7 +18,7 @@ class Header extends Component {
 	searchHandler(e) {
 		this.search = e.target.value;
 		clearTimeout(this.to);
-		this.to = setTimeout(e => {actionCreators.searchBar(this.search, this.props.dispatch);}, 800);
+		this.to = setTimeout(e => {actionCreators.searchBar(this.search, this.props.dispatch);}, 500);
 	}
 
 	render() {

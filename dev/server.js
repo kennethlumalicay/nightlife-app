@@ -82,6 +82,8 @@ function renderFullPage(html, preloadedState) {
     <html>
       <head>
         <title>Redux Universal Example</title>
+        <script src="https://use.fontawesome.com/663123f680.js"></script>
+        <link href="/src/css/index.css" rel="stylesheet" type="text/css">
       </head>
       <body>
         <div id="root">${html}</div>
