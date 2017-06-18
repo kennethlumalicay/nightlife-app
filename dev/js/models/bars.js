@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var Bar = new Schema({
 	bar: {
-		id: String
+		id: String,
 		going: [{
 			userID: String
 		}]

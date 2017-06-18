@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {searchBar} from './../actions/index'
+import {searchBar} from './../actions/index';
 
 @connect(
 	state => ({
@@ -11,6 +11,15 @@ import {searchBar} from './../actions/index'
 )
 
 class Bars extends Component {
+	constructor(props) {
+		super(props);
+
+	}
+
+	clickHandler(e) {
+		console.log('event',e.target.value);
+	}
+
 	render() {
 		if(this.props.bars.isFetching) {
 			return <h1 className='bar-filler'><i className="fa fa-map-marker fa-spin" aria-hidden="true"></i> Searching.</h1>
@@ -18,7 +27,6 @@ class Bars extends Component {
 			return <h1 className='bar-filler'><i className="fa fa-beer" aria-hidden="true"> not found!</i></h1>
 		} else if(this.props.bars.businesses) {
 			var oldBars = this.props.bars.businesses;
-			console.log(oldBars);
 			var bars = oldBars.map(bar => {
 				bar.rating = new Array(Math.round(bar.rating)).fill()
 					.map((e,i) => <i key={i} className="fa fa-star" aria-hidden="true"></i>);
@@ -39,10 +47,10 @@ class Bars extends Component {
 					     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
 					      <p>Rating: {bar.rating}</p>
 					    </div>
-					    <button className="reservation-btn">
-					    <i className="fa fa-hand-o-right" aria-hidden="true"></i> 
-					    Not going
-					     <i className="fa fa-hand-o-left" aria-hidden="true"></i>
+					    <button value={bar.id} className="reservation-btn" onClick={this.clickHandler}>
+					    <i className="fa fa-hand-o-right" aria-hidden="true"></i>
+					    {bar.going?'Going':'Not going'}
+					    <i className="fa fa-hand-o-left" aria-hidden="true"></i>
 					    </button>
 		    		</div>
 		    	)}
@@ -54,18 +62,4 @@ class Bars extends Component {
   }
 };
 
-/*
-function mapStateToProps(state) {
-    return {
-        bars: state.bars,
-        user: state.user
-    };
-}
-
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({searchBar: searchBar}, dispatch);
-}
-*/
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Bars);
 export default Bars;

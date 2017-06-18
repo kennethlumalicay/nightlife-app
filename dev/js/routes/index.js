@@ -2,28 +2,17 @@ var path = process.cwd();
 var yelp = require('./../api/yelpApi.js');
 
 module.exports = function (app, passport) {
-	var logged = false;
-
-	function isLoggedIn (req, res, next) {
-		if (req.isAuthenticated()) {
-			console.log("User is logged in.");
-			logged = true;
-			return next();
-		} else {
-			console.log("User is signed out.");
-			logged = false;
-			if(req.url == '/') return next();
-			else res.redirect('/');
-		}
-	}
-
 	app.route('/login')
 		.get(function (req, res) {
+			req.session.search = req.query.search;
+			req.session.saveSearch = true;
 			res.redirect('/auth/twitter');
 		});
 
 	app.route('/signout')
 		.get(function (req, res) {
+			req.session.search = req.query.search;
+			req.session.saveSearch = true;
 			req.logout();
 			res.redirect('/');
 		});

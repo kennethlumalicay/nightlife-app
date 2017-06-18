@@ -2,14 +2,10 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
-import createLogger from 'redux-logger';
-import allReducers from './js/reducers';
 import App from './js/components/App';
 import { renderToString } from 'react-dom/server';
 import qs from 'qs';
+import storeHolder from './js/reduxStore.js';
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -55,27 +51,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.enable('trust proxy');
 // Routes , pass yelp here
 routes(app, passport);
-
-var yelp = require('./js/api/yelpApi.js');
 // https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
 app.use(handleRender);
 function handleRender(req, res) {
   let initialState = {
+    search: req.session.saveSearch ? req.session.search : '',
     user: req.user ? req.user.twitter : null,
     bars: {
+      businesses: req.session.bars ? req.session.bars : null,
       isFetching: false,
       isFetchFail: false
     }
   };
-	const store = createStore(
-    allReducers,
-    initialState,
-    applyMiddleware(thunk, promise(), createLogger())
-  );
+  req.session.saveSearch = false;
+
+  const store = storeHolder.initialize(initialState);
 
 	const html = renderToString(
 		<Provider store={store}>
-			<App logged={req.isAuthenticated()}/>
+			<App />
 		</Provider>
 	);
 
@@ -87,7 +81,7 @@ function renderFullPage(html, preloadedState) {
 	return `
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        <title>Bar hopping?</title>
         <script src="https://use.fontawesome.com/663123f680.js"></script>
         <link href="/src/css/index.css" rel="stylesheet" type="text/css">
       </head>

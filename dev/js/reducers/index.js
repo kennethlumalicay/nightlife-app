@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import UserReducer from './reducer-user';
 import BarReducer from './reducer-bars';
+import SearchReducer from './reducer-search';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -8,6 +9,7 @@ import BarReducer from './reducer-bars';
  * */
 
 const allReducers = combineReducers({
+		search: SearchReducer,
     user: UserReducer,
     bars: BarReducer
 });

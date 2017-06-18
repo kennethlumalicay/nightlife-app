@@ -18,8 +18,15 @@ export default function (state = null, action) {
         			businesses: null,
         			isFetching: false,
         			isFetchFail: action.failed
-        		})
+        		});
         		break;
+        case 'BAR_CLEAR':
+        		console.log('BAR_CLEAR', action.payload);
+      			return Object.assign({}, state, {
+                    businesses: null,
+                    isFetching: false,
+                    isFetchFail: false
+                });
     }
     return state;
 }
