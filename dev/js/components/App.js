@@ -8,6 +8,9 @@ class App extends Component {
 	    <section id="app">
     		<Header />
     		<Bars />
+    		<div id="footer">
+    			<p>App made by <a href="https://kennethlumalicay.github.io/portfolio/">Kenneth Malicay</a></p>
+    		</div>
 	    </section>
     );
   }
