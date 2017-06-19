@@ -21,6 +21,8 @@ class Bars extends Component {
 	}
 
 	clickHandler(e) {
+		if(this.props.user)
+			e.preventDefault();
 		this.values = e.target.getAttribute('data-value').split('---');
 		clearTimeout(this.to);
 		this.to = setTimeout(() => {
@@ -75,7 +77,7 @@ class Bars extends Component {
 					      <p>Rating: {bar.rating}</p>
 					      <p>{goingUsers.map(e=>e[0]).includes(i)?goingUsers[cUse++][1].join(', ') + ' is going.':'Join the party!'}</p>
 					    </div>
-					    <a href={this.props.user?'#':'/login?search='+this.props.search} data-value={bar.id +'---'+ going.includes(i)}
+					    <a href={'/login?search='+this.props.search} data-value={bar.id +'---'+ going.includes(i)}
 					    	className="reservation-btn" onClick={this.clickHandler}>
 					    <i className="fa fa-hand-o-right" aria-hidden="true"></i>
 					    {going.includes(i)?'Going':'Not going'}
