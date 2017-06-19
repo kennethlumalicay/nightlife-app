@@ -34,7 +34,7 @@ class Bars extends Component {
 		if(this.props.bars.isFetching) {
 			return <h1 className='bar-filler'><i className="fa fa-map-marker fa-spin" aria-hidden="true"></i> Searching.</h1>
 		} else if(this.props.bars.isFetchFail) {
-			return <h1 className='bar-filler'><i className="fa fa-beer" aria-hidden="true"> not found!</i></h1>
+			return <h1 className='bar-filler'><i className="fa fa-beer" aria-hidden="true"></i> not found!</h1>
 		} else if(this.props.bars.businesses) {
 			var oldBars = this.props.bars.businesses;
 			var going = [];
