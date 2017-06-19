@@ -1,33 +1,20 @@
-![](http://i.imgur.com/DUiL9yn.png)
+# FCC Nightlife App
+Website: https://nightlife-app-klm.herokuapp.com/
 
-# React/Sass/Redux Boilerplate
+This is a project I made for FCC.
 
-Boilerplate and guide for a React/Sass/Redux build.
+In this project I learned:
+* How to make an Isomorphic App
+* Redux and thunk
+* Axios
+* mongo-connect
 
-## Getting Started
+I got to practice:
+* React
+* API calls
 
-To get started, first install all the necessary dependencies.
-```
-> npm install
-```
-
-Run an initial webpack build
-```
-> webpack
-```
-
-Start the development server (changes will now update live in browser)
-```
-> npm run start
-```
-
-To view your project, go to: [http://localhost:3000/](http://localhost:3000/)
-
-## Links
-
-- [Donate](https://www.patreon.com/thenewboston)
-- [thenewboston.com](https://thenewboston.com/)
-- [Facebook](https://www.facebook.com/TheNewBoston-464114846956315/)
-- [Twitter](https://twitter.com/bucky_roberts)
-- [Google+](https://plus.google.com/+BuckyRoberts)
-- [reddit](https://www.reddit.com/r/thenewboston/)
+I'm giving credits to the following for some educational reference that helped me make this app:
+https://www.freecodecamp.com/
+https://github.com/buckyroberts/React-Redux-Boilerplate - TheNewBoston / Bucky Roberts
+https://www.youtube.com/channel/UCVTlvUkGslCV_h-nSAId8Sw - LearnCode.academy
+https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
