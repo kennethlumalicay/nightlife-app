@@ -23,7 +23,10 @@ module.exports = function(query, response) {
 			var match = bar ? bar.bar.going.filter(e=>e.userID === query.userId) : null;
 			if(match) {
 				if(query.action == 'add') {
-					bar.bar.going.push({userID: query.userId});
+					bar.bar.going.push({
+						userID: query.userId,
+						username: query.username,
+					});
 				} else if(query.action == 'remove') {
 					bar.bar.going = bar.bar.going.filter((e) => e.userID != query.userId);
 				}
