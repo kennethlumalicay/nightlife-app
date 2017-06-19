@@ -73,7 +73,7 @@ class Bars extends Component {
 					     	<p>{bar.price}</p>
 					     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
 					      <p>Rating: {bar.rating}</p>
-					      <p>{goingUsers.map(e=>e[0]).includes(i)?goingUsers[cUse++][1] + 'is going.':'Join the party!'}</p>
+					      <p>{goingUsers.map(e=>e[0]).includes(i)?goingUsers[cUse++][1] + ' is going.':'Join the party!'}</p>
 					    </div>
 					    <a href={this.props.user?'#':'/login?search='+this.props.search} data-value={bar.id +'---'+ going.includes(i)}
 					    	className="reservation-btn" onClick={this.clickHandler}>
