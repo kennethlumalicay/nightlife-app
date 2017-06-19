@@ -21,7 +21,7 @@ export default function (state = null, action) {
         		});
         		break;
         case 'BAR_CLEAR':
-        		console.log('BAR_CLEAR', action.payload);
+        		console.log('BAR_CLEAR');
       			return Object.assign({}, state, {
                     businesses: null,
                     isFetching: false,

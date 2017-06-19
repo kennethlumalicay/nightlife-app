@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-export function toggleGoing (user, bar, dispatch) {
+export function toggleGoing (user, bar, action, dispatch) {
+	axios.get('/api/bars', { params: { action: action, userId: user.id, username: user.username, barId: bar }})
+	.then(res => {
+		dispatch({ type:'BARSLIST_UPDATE', payload: res.data });
+	})
+	.catch(err => {
+		console.log('Failed to fetch data from bars api.', err);
+		dispatch({ type:'BARSLIST_FAILED' })
+	});
 }
 
 export function searchBar(search, dispatch, lat=null, lon=null) {

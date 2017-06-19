@@ -13,6 +13,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var routes = require('./js/routes/index.js');
 var mongoStore = require('connect-mongo')(session);
+var BarsList = require('./js/models/bars.js');
 // Express app
 var app = express();
 // .env
@@ -47,35 +48,38 @@ app.set('views', __dirname + '/../src');
 app.set('view engine', 'html');
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true }));
-// 
 app.enable('trust proxy');
 // Routes , pass yelp here
 routes(app, passport);
 // https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
 app.use(handleRender);
 function handleRender(req, res) {
-  let initialState = {
-    search: req.session.saveSearch ? req.session.search : '',
-    user: req.user ? req.user.twitter : null,
-    bars: {
-      businesses: req.session.bars ? req.session.bars : null,
-      isFetching: false,
-      isFetchFail: false
-    }
-  };
-  req.session.saveSearch = false;
+  BarsList.find(function(err, barsList) {
+    let initialState = {
+      search: req.session.saveSearch ? req.session.search : '',
+      user: req.user ? req.user.twitter : null,
+      bars: {
+        businesses: req.session.bars || null,
+        isFetching: false,
+        isFetchFail: false
+      },
+      barsList: barsList || null
+    };
 
-  const store = storeHolder.initialize(initialState);
+    req.session.saveSearch = false;
 
-	const html = renderToString(
-		<Provider store={store}>
-			<App />
-		</Provider>
-	);
+    const store = storeHolder.initialize(initialState);
 
-	const preloadedState = store.getState();
+    const html = renderToString(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
 
-	res.send(renderFullPage(html, preloadedState));
+    const preloadedState = store.getState();
+
+    res.send(renderFullPage(html, preloadedState));
+  });
 }
 function renderFullPage(html, preloadedState) {
 	return `

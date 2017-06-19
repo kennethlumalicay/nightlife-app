@@ -7,7 +7,8 @@ var Bar = new Schema({
 	bar: {
 		id: String,
 		going: [{
-			userID: String
+			userID: String,
+			username: String
 		}]
 	}
 }, {collection: 'bars'});

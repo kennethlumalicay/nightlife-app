@@ -21,9 +21,10 @@ module.exports = function(query, response) {
 				headers: { Authorization: AuthStr },
 				params: {
 					location: query.location,
-					latitude: query.lat,
-					longitude: query.lon,
+					//latitude: query.lat,
+					//longitude: query.lon,
 					categories: 'nightlife',
+					limit: 50
 				}
 			})
 			.then(res => {

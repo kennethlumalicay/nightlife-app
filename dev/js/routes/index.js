@@ -1,5 +1,6 @@
 var path = process.cwd();
 var yelp = require('./../api/yelpApi.js');
+var bars = require('./../api/barsApi.js');
 
 module.exports = function (app, passport) {
 	app.route('/login')
@@ -29,5 +30,10 @@ module.exports = function (app, passport) {
 	app.route('/api/yelp')
 		.get(function (req, res) {
 			yelp(req.query, res);
+		});
+
+	app.route('/api/bars')
+		.get(function (req, res) {
+			bars(req.query, res);
 		});
 };
