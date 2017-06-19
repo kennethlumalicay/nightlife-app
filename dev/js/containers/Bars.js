@@ -46,20 +46,19 @@ class Bars extends Component {
 				if(this.props.barsList) {
 					this.props.barsList.map((e,i) => {
 						if(e.bar.id === bar.id) {
+							goingUsers.push([j,e.bar.going.map(e=>e.username)]);
 							e.bar.going.map(v=> {
 								if(this.props.user) {
 									if(v.userID === this.props.user.id) {
 										going.push(j);
 									}
 								}
-								goingUsers.push([j,e.bar.going.map(e=>e.username)]);
 							});
 						}
 					});
 				}
 				return bar;
 			});
-			// return
 			return (
 		    <section id="bars">
 		    	{bars.map((bar,i)=> 
