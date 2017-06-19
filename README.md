@@ -1,4 +1,4 @@
-# FCC Nightlife App
+# Nightlife App
 Website: https://nightlife-app-klm.herokuapp.com/
 
 This is a project I made for FCC.
@@ -7,11 +7,16 @@ In this project I learned:
 * How to make an Isomorphic App
 * Redux and thunk
 * Axios
-* mongo-connect
+* Mongo-connect to express-session
+* Passport twitter
 
 I got to practice:
 * React
 * API calls
+* Passport
+* Mongoose models
+* Node js
+* Express js
 
 I'm giving credits to the following for some educational reference that helped me make this app:
 https://www.freecodecamp.com/
