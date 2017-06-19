@@ -60,7 +60,6 @@ class Bars extends Component {
 				return bar;
 			});
 			// return
-			console.log('goingUsers',goingUsers,goingUsers.includes(1));
 			return (
 		    <section id="bars">
 		    	{bars.map((bar,i)=> 
