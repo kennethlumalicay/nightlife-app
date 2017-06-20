@@ -75,11 +75,11 @@ class Bars extends Component {
 						     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
 						      <p>Rating: {bar.rating}</p>
 						      <p>{goingUsers.map(e=>e[0]).includes(i)
-						      	?[<span className="going-users">{goingUsers[cUse++][1].join(', ')}</span>,' is going.']
+						      	?[<span key={cUse} className="going-users">{goingUsers[cUse++][1].join(', ')}</span>,' is going.']
 						      	:'Join the party!'}</p>
 							    <p className={going.includes(i)?"reservation-btn going":"reservation-btn"}>
-							    {going.includes(i)?[<i className="fa fa-hand-o-right" aria-hidden="true"></i>,
-							    "  Going  ",<i className="fa fa-hand-o-left" aria-hidden="true"></i>]
+							    {going.includes(i)?[<i key={i} className="fa fa-users" aria-hidden="true"></i>,
+							    "  Going"]
 							    :'Not going'}
 							    </p>
 						    </div>

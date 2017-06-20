@@ -83,7 +83,7 @@ body {
 	margin: 2px auto;
 }
 .going-users {
-	font-family: "verdana";
+	font-size: 1.1em;
 	color: rgba(117,255,117,0.9);
 }
 .reservation-btn {
