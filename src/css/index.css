@@ -81,7 +81,7 @@ body {
 }
 .bars-div > div > p {
 	margin: 2px auto;
-	height: 1.5em;
+	min-height: 1.5em;
 }
 .going-users {
 	font-size: 1.1em;
