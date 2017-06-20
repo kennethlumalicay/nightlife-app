@@ -42,18 +42,29 @@ body {
 	border-radius: 2px;
 }
 #bars {
+	font-size: 1.3em;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
 	flex-wrap: wrap;
 	font-family: 'Averia Sans Libre', cursive;
 }
+#bars > a {
+	text-decoration: none;
+	opacity: 0.9;
+	transform: scale(0.9, 0.9);
+	transition: all 0.5s ease-in-out;
+}
+#bars > a:hover {
+	transform: scale(1, 1);
+	opacity: 1;
+}
 .bars-div {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	max-width: 346px;
-	margin: 10px;
+	margin: 0px;
 	box-shadow: -5px 5px 15px 0px rgba(0, 0, 0, 1);
 	border-radius: 2px;
 }
@@ -71,7 +82,12 @@ body {
 .bars-div > div > p {
 	margin: 2px auto;
 }
+.going-users {
+	font-family: "verdana";
+	color: rgba(117,255,117,0.9);
+}
 .reservation-btn {
+	margin: 0;
 	outline: none;
 	border: none;
 	color: rgba(222,222,222,0.9);
@@ -84,6 +100,9 @@ body {
 .reservation-btn:hover {
 	color: rgba(255,255,255,1);
 	background-color: rgba(55,55,55,1);
+}
+.going {
+	color: rgba(100,255,100,0.7);
 }
 .bar-filler {
 	font-family: 'Megrim', cursive;

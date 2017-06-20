@@ -15,7 +15,6 @@ import * as actionCreators from './../actions/index';
 class Bars extends Component {
 	constructor(props) {
 		super(props);
-		this.clickHandler = this.clickHandler.bind(this);
 		var to;
 		var values;
 	}
@@ -23,7 +22,7 @@ class Bars extends Component {
 	clickHandler(e) {
 		if(this.props.user)
 			e.preventDefault();
-		this.values = e.target.getAttribute('data-value').split('---');
+		this.values = e.currentTarget.getAttribute('data-value').split('--');
 		clearTimeout(this.to);
 		this.to = setTimeout(() => {
 			actionCreators.toggleGoing(this.props.user, this.values[0], this.values[1]==='true'?'remove':'add', this.props.dispatch);
@@ -61,27 +60,34 @@ class Bars extends Component {
 			});
 			return (
 		    <section id="bars">
-		    	{bars.map((bar,i)=> 
-		    		<div className='bars-div' key={i} style={{
-		    			backgroundImage: 'url(' + bar.image_url + ')',
-		    			backgroundSize: 'cover'
-		    		}}>
-					    <div>
-					    	<h2>{bar.name}</h2>
-					      <p>{bar.location.address1}, {bar.location.city}</p>
-					     	<p>{bar.phone}</p>
-					     	<p>{bar.price}</p>
-					     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
-					      <p>Rating: {bar.rating}</p>
-					      <p>{goingUsers.map(e=>e[0]).includes(i)?goingUsers[cUse++][1].join(', ') + ' is going.':'Join the party!'}</p>
-					    </div>
-					    <a href={'/login?search='+this.props.search} data-value={bar.id +'---'+ going.includes(i)}
-					    	className="reservation-btn" onClick={this.clickHandler}>
-					    <i className="fa fa-hand-o-right" aria-hidden="true"></i>
-					    {going.includes(i)?'Going':'Not going'}
-					    <i className="fa fa-hand-o-left" aria-hidden="true"></i>
-					    </a>
-		    		</div>
+		    	{bars.map((bar,i)=>
+				    <a key={i} href={'/login?search='+this.props.search} data-value={bar.id +'--'+ going.includes(i)}
+				    	onClick={this.clickHandler.bind(this)}>
+			    		<div className='bars-div' style={{
+			    			backgroundImage: 'url(' + bar.image_url + ')',
+			    			backgroundSize: 'cover'
+			    		}}>
+						    <div>
+						    	<h2>{bar.name}</h2>
+						      <p>{bar.location.address1}, {bar.location.city}</p>
+						     	<p>{bar.phone}</p>
+						     	<p>{bar.price}</p>
+						     	{/*<p>{bar.distance.toFixed(2)}</p>*/}
+						      <p>Rating: {bar.rating}</p>
+						      <p>{goingUsers.map(e=>e[0]).includes(i)
+						      	?[<span className="going-users">{goingUsers[cUse++][1].join(', ')}</span>,' is going.']
+						      	:'Join the party!'}</p>
+							    <p className={going.includes(i)?"reservation-btn going":"reservation-btn"}>
+							    {going.includes(i)?[<i className="fa fa-hand-o-right" aria-hidden="true"></i>,
+							    "  Going  ",<i className="fa fa-hand-o-left" aria-hidden="true"></i>]
+							    :'Not going'}
+							    </p>
+						    </div>
+						    {/*<a href={'/login?search='+this.props.search} data-value={bar.id +'---'+ going.includes(i)}
+						    	className="reservation-btn" onClick={this.clickHandler}>*/}
+						    {/*</a>*/}
+			    		</div>
+		    		</a>
 		    	)}
 		    </section>
 	    )
