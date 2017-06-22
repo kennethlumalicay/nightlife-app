@@ -1,5 +1,8 @@
 # Nightlife App
-Website: https://MY_WEBSITE_HERE.herokuapp.com/
+Website: https://nightlife-app-klm.herokuapp.com/
+
+In this app you can search a place and see all the nightlife activities you can do.
+You can see other people who are going to the bar and also add yourself to the going list of the bar for other people to see.
 
 This is a project I made for FCC.
 
